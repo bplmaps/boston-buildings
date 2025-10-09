@@ -28,13 +28,21 @@ code {
 }
 
 .maplibregl-legend-list {
-  width:200px;
+  width: 200px;
   padding: 4px 16px 4px 4px;
 }
 
 .legend-table-td {
   width: 70px !important;
   height: 30px !important;
+}
+
+.maplibregl-legend-title-label {
+  font-size: 1.5em !important;
+}
+
+.legend-subtext {
+  padding-top: 2em;
 }
 
 /* remove the rendered layers checkbox */

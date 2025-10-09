@@ -11,16 +11,7 @@
 
   config.apiKey = "YAlgbo83caczbP46lxYj";
 
-  const customElement = document.createElement("div");
-  customElement.className = "my-custom-control ol-unselectable ol-control"; // Add OpenLayers default classes for styling
-  customElement.innerHTML = "Custom Control"; // Or add other elements like buttons, text, etc.
-
-  let customControl;
-
   onMount(() => {
-    let customControl = new Control({
-      element: customElement,
-    });
     const initialState = { lng: -71.06, lat: 42.36, zoom: 14 };
 
     map = new Map({
@@ -30,8 +21,6 @@
       zoom: initialState.zoom,
       minZoom: 11,
     });
-
-    // map.addControl(customControl);
   });
 
   onDestroy(() => {
@@ -42,7 +31,6 @@
 <div class="map-wrap">
   <div class="map" bind:this={mapContainer}>
     {#if map}
-      <Help />
       <Legend {map} />
     {/if}
   </div>

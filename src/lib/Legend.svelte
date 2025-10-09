@@ -9,14 +9,6 @@
   let { map } = $props();
 
   onMount(() => {
-    const customElement = document.createElement("div");
-    customElement.className = "explainer-text ol-unselectable ol-control"; // Add OpenLayers default classes for styling
-    customElement.innerHTML = "Custom Control"; // Or add other elements like buttons, text, etc.
-
-    let customControl = new Control({
-      element: customElement,
-    });
-
     if (!map) return;
 
     const targets = {
@@ -41,6 +33,14 @@
 
     const legendControl = new MaplibreLegendControl(targets, options);
     map.addControl(legendControl, "bottom-left");
-    // map.addControl(customControl);
+
+    setTimeout(() => {
+      const title = document.querySelector(".maplibregl-legend-title-label");
+        const subtext = document.createElement("div");
+        subtext.className = "legend-subtext";
+        subtext.textContent =
+          "The slashes mean {{ describe what they mean... keep it short! }} ";
+        title.insertAdjacentElement("afterend", subtext);
+    }, 0);
   });
 </script>

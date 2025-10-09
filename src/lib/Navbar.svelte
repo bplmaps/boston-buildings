@@ -1,3 +1,7 @@
+<script>
+  import Help from "./Help.svelte";
+</script>
+
 <nav class="bg-black py-1 font-sans border-b-1 border-white">
   <div class="max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between">
@@ -20,6 +24,7 @@
           </p>
         </div>
       </div>
+      <Help />
     </div>
   </div>
 </nav>
