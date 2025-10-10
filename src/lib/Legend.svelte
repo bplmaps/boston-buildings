@@ -37,7 +37,7 @@
     const subtext = document.createElement("div");
     subtext.className = "legend-subtext";
     subtext.textContent =
-      "The slashes mean {{ describe what they mean... keep it short! }} ";
+      "The gray slashes mark buildings where the year built is uncertain. The ID used to match the construction year appears more than once, meaning multiple buildings share the same ID, but were not necessarily built in the same year.";
     title.insertAdjacentElement("afterend", subtext);
 
     $effect(() => {
