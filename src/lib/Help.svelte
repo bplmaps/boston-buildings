@@ -13,6 +13,6 @@
 
 {#if show}
   <div class="absolute align-center align-middle bg-white/90 p-2 rounded">
-    <p class="text-sm">testing text</p>
+    <p class="text-sm">testing text, list the inspiration, the data source, some things to look out for in the data</p>
   </div>
 {/if}
