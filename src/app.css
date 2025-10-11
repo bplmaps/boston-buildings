@@ -27,8 +27,12 @@ code {
   height: 100%;
 }
 
+.maplibregl-ctrl-bottom-left {
+  opacity: 0.95 !important;
+}
+
 .maplibregl-legend-list {
-  width: 200px;
+  width: 280px;
   padding: 4px 16px 4px 4px;
 }
 
