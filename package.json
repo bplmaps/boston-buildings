@@ -19,6 +19,7 @@
     "@maptiler/sdk": "^3.8.0",
     "@tailwindcss/vite": "^4.1.14",
     "@watergis/maplibre-gl-legend": "^2.0.5",
+    "maplibre-gl": "^5.9.0",
     "ol": "^10.6.1",
     "ol-mapbox-style": "^13.1.0",
     "tailwindcss": "^4.1.14"

@@ -27,8 +27,12 @@ code {
   height: 100%;
 }
 
+.maplibregl-ctrl-bottom-left {
+  opacity: 0.95 !important;
+}
+
 .maplibregl-legend-list {
-  width:200px;
+  width: 280px;
   padding: 4px 16px 4px 4px;
 }
 
@@ -37,14 +41,71 @@ code {
   height: 30px !important;
 }
 
+.maplibregl-legend-title-label {
+  font-size: 1.5em !important;
+}
+
 /* remove the rendered layers checkbox */
 
-.maplibregl-legend-list > input {
-  visibility: hidden;
+.maplibregl-legend-list > input[type="checkbox"] {
   display: none;
 }
 
 .maplibregl-legend-list > .maplibregl-legend-onlyRendered-label {
-  visibility: hidden;
   display: none;
+}
+
+.legend-subtext {
+  padding: 2em 0em 0em 1em;
+  font-size: 0.75rem;
+  color: #777;
+}
+
+.highlight {
+  outline: 3px solid black !important;
+  border-radius: 2px !important;
+}
+
+.highlight::before {
+  content: "»";
+  font-size: 2em;
+  margin-left: -1em;
+}
+
+input[type="checkbox"] {
+  margin-left: 1em;
+  appearance: none;
+  background-color: #fff;
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid currentColor;
+  border-radius: 0.15em;
+  transform: translateY(-0.075em);
+  display: grid;
+  place-content: center;
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--form-control-color);
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+input[type="checkbox"]::before {
+  background-color: CanvasText;
+}
+
+a {
+  color: red;
+  text-decoration: underline dotted;
+  text-underline-offset: 0.125em;
 }
