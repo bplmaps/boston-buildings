@@ -31,12 +31,12 @@
     {#if show}
       <div
         transition:slide
-        class="absolute z-100 text-white text-sm mx-12 bg-black/95 rounded-b-xl border-t border-white shadow-xl"
+        class="absolute z-100 text-white text-sm md:text-md mx-16 bg-black/90 rounded-b-xl border-t border-white shadow-xl"
       >
-        <div class="py-4 px-12">
+        <div class="py-2 px-4 md:px-12 md:py-4">
           <p>
             This map shows the year of construction for all buildings in
-            Boston (2024). The year built data comes from the city’s
+            Boston as of 2024. The year built data comes from the city's
             comprehensive <a
               href="https://data.boston.gov/dataset/boston-buildings-inventory"
               >building inventory dataset</a
@@ -47,11 +47,11 @@
               >MassGIS dataset</a
             >. The map is useful for identifying citywide patterns in building
             ages, though individual records may contain inaccuracies since the
-            data was originally collected for such specific analysis. Read more
+            data was originally collected for a variety of purposes. Read more
             about the project <a href="https://leventhalmap.org">here</a>.
           </p>
           <p class="mt-2">
-            Inspired by Bert Spaan's Waag Society
+            Source code on <a href="https://github.com/bplmaps/boston-buildings">Github</a>. Made with Maptiler, MapLibre, and Svelte 5. Inspired by Bert Spaan's Waag Society
             <a
               class="underline text-blue-300"
               href="https://code.waag.org/buildings/#52.3589,4.894,15"
