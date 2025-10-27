@@ -28,17 +28,26 @@
       onlyRendered: false,
       showCheckbox: true,
       reverseOrder: true,
+      title: "Buildings by year built"
     };
+
+    // hacking the maplibre legend to bits, ugh!
 
     const legendControl = new MaplibreLegendControl(targets, options);
     map.addControl(legendControl, "bottom-left");
-
     const title = document.querySelector(".maplibregl-legend-title-label");
-    const subtext = document.createElement("div");
+    const subtitleHolder = document.createElement("div");
+    const subtext = document.createElement("span");
+    const atag = document.createElement("a");
     subtext.className = "legend-subtext";
-    subtext.textContent =
-      "The gray slashes mark buildings where the year built is uncertain. The ID used to match the construction year appears more than once, meaning multiple buildings share the same ID, but were not necessarily built in the same year.";
-    title.insertAdjacentElement("afterend", subtext);
+    subtitleHolder.className = "subtitleHolder";
+    subtext.textContent = "The gray slashes indicate buildings where the year built is uncertain. ";
+    atag.textContent = "Read more about our methodology.";
+    title.insertAdjacentElement("afterend", subtitleHolder);
+    subtitleHolder.appendChild(subtext);
+    subtitleHolder.appendChild(atag);
+    atag.href = "https://leventhalmap.org/articles/boston-buildings"
+    subtitleHolder.parentNode.removeChild(subtitleHolder.nextSibling)
 
     $effect(() => {
       document
@@ -69,12 +78,16 @@
 </script>
 
 <style>
- :global(.maplibregl-legend-list) {
-  max-height: none !important;
-  } 
+  :global(.subtitleHolder) {
+    margin: 1em 1em 0em 1em;
+  }
+
+  :global(.maplibregl-legend-list) {
+    max-height: none !important;
+  }
 
   :global(.legend-subtext) {
-    font-size: 0.7rem;
+    padding: 0px !important;
     color: #666;
     margin-top: 0.5rem;
     line-height: 1.3;
