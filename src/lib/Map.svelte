@@ -1,10 +1,10 @@
 <script>
-  import { fly, fade } from "svelte/transition";
   import "@maptiler/sdk/dist/maptiler-sdk.css";
   import { onMount } from "svelte";
   import { Map, config } from "@maptiler/sdk";
   import Legend from "./Legend.svelte";
   import { Popup } from "@maptiler/sdk";
+  import { mapState } from "./state.svelte";
 
   let map = $state();
   let mapContainer;
@@ -38,7 +38,11 @@
 
   onMount(() => {
     config.apiKey = "YAlgbo83caczbP46lxYj";
-    const initialState = { lng: -71.06, lat: 42.36, zoom: 14 };
+    const initialState = {
+      lng: mapState.long,
+      lat: mapState.lat,
+      zoom: mapState.zoom,
+    };
 
     map = new Map({
       container: mapContainer,
@@ -94,14 +98,30 @@
           )
           .addTo(map);
       });
+
+      function updateHash() {
+        const center = map.getCenter();
+        const zoom = map.getZoom().toFixed(1);
+
+        const centerCoords = {
+          lng: center.lng.toFixed(3),
+          lat: center.lat.toFixed(3),
+        };
+
+        mapState.long = centerCoords.lng;
+        mapState.lat = centerCoords.lat;
+        mapState.zoom = zoom;
+
+        window.location.hash = `/zoom:${mapState.zoom}$long:${mapState.long}$lat:${mapState.lat}`;
+      }
+      map.on("dragend", () => { updateHash()})
+      map.on("zoomend", () => { updateHash()})
     });
   });
 </script>
 
 <div class="map-wrap">
   <div class="map" bind:this={mapContainer}>
-    <div id="geocodecontainer"></div>
-
     {#if map && delay}
       <Legend {map} {legendArrow} />
     {/if}
