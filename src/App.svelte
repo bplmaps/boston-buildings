@@ -21,7 +21,7 @@
       const v = kv.slice(i + 1);
       params[k] = v;
     });
-    return params;
+    return {...defaults, ...params};
   }
 
   onMount(() => {
