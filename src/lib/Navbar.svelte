@@ -48,7 +48,7 @@
             >. The map is useful for identifying citywide patterns in building
             ages, though individual records may contain inaccuracies since the
             data was originally collected for a variety of purposes. Read more
-            about the project <a href="https://leventhalmap.org">here</a>.
+            about the project <a href="https://leventhalmap.org/articles/dating-every-building-in-boston">here</a>.
           </p>
           <p class="mt-2">
             Source code on <a href="https://github.com/bplmaps/boston-buildings">Github</a>. Made with Maptiler, MapLibre, and Svelte 5. Inspired by Bert Spaan's Waag Society
