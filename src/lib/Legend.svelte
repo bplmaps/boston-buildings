@@ -46,7 +46,7 @@
     title.insertAdjacentElement("afterend", subtitleHolder);
     subtitleHolder.appendChild(subtext);
     subtitleHolder.appendChild(atag);
-    atag.href = "https://leventhalmap.org/articles/boston-buildings"
+    atag.href = "https://leventhalmap.org/articles/dating-every-building-in-boston"
     subtitleHolder.parentNode.removeChild(subtitleHolder.nextSibling)
 
     $effect(() => {

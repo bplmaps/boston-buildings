@@ -104,8 +104,8 @@
         const zoom = map.getZoom().toFixed(1);
 
         const centerCoords = {
-          lng: center.lng.toFixed(3),
-          lat: center.lat.toFixed(3),
+          lng: center.lng.toFixed(4),
+          lat: center.lat.toFixed(4),
         };
 
         mapState.long = centerCoords.lng;
