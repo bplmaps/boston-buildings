@@ -5,11 +5,16 @@
   import Legend from "./Legend.svelte";
   import { Popup } from "@maptiler/sdk";
   import { mapState } from "./state.svelte";
+  import Form from "./Form.svelte";
+  import { faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 
   let map = $state();
   let mapContainer;
   let legendArrow = $state();
   let delay = $state(false);
+
+  let pid = $state(null);
+  let lnglat = $state()
 
   setTimeout(() => {
     delay = true;
@@ -91,12 +96,39 @@
 
       map.on("click", "buildings-layer", (e) => {
         const feature = e.features[0];
-        new Popup()
-          .setLngLat(e.lngLat)
-          .setHTML(
-            `<div class="text-md">Year Built: <strong>${feature.properties.yr_built || "Unknown"}</strong></div>`
-          )
-          .addTo(map);
+        if (!pid === undefined) {
+          pid = feature.properties.pid_long;
+        } else {
+          pid = 999999999
+        }
+
+        lnglat = e.lngLat
+
+        const container = document.createElement("div");
+        container.innerHTML = `
+        <div class="text-lg">
+          Year Built:
+          <strong>${feature.properties.yr_built || "Unknown"}</strong>
+        </div>
+        <a class="text-[1.2em]" href="https://atlascope.org/#/view:share$mode:glass$center:${lnglat.lng},${lnglat.lat}$zoom:19$base:maptiler-streets$overlay:ark:/76611/al7rtfm98">
+          Open Atlascope here
+        </a>
+        <div class="mt-2 italic px-2 py-1 bg-stone-100 rounded">
+          <p class="inline">Does the year look wrong?
+            <button class="inline underline text-red-600 cursor-pointer">
+              Click here to suggest a correction!
+            </button>
+          </p>
+        </div>
+        `;
+
+        const button = container.querySelector("button");
+        button.addEventListener("click", () => {
+          mapState.form = !mapState.form;
+          console.log(feature.properties.pid_long);
+        });
+
+        new Popup().setLngLat(e.lngLat).setDOMContent(container).addTo(map);
       });
 
       function updateHash() {
@@ -114,13 +146,20 @@
 
         window.location.hash = `/zoom:${mapState.zoom}$long:${mapState.long}$lat:${mapState.lat}`;
       }
-      map.on("dragend", () => { updateHash()})
-      map.on("zoomend", () => { updateHash()})
+      map.on("dragend", () => {
+        updateHash();
+      });
+      map.on("zoomend", () => {
+        updateHash();
+      });
     });
   });
 </script>
 
 <div class="map-wrap">
+  {#if mapState.form}
+    <Form {pid} {lnglat} />
+  {/if}
   <div class="map" bind:this={mapContainer}>
     {#if map && delay}
       <Legend {map} {legendArrow} />

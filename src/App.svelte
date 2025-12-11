@@ -1,6 +1,7 @@
 <script>
   import Map from "./lib/Map.svelte";
   import Navbar from "./lib/Navbar.svelte";
+  import Splash from "./lib/Splash.svelte";
 
   import { mapState } from "./lib/state.svelte";
   import { onMount } from "svelte";
@@ -19,16 +20,16 @@
       const v = kv.slice(i + 1);
       params[k] = v;
     });
-    return {...defaults, ...params};
+    return { ...defaults, ...params };
   }
 
   onMount(() => {
     const urlParams = parseUrlParams(
       window.location.hash.substring(2).split("#")[0]
     );
-    mapState.long = urlParams.long
-    mapState.lat = urlParams.lat
-    mapState.zoom = urlParams.zoom
+    mapState.long = urlParams.long;
+    mapState.lat = urlParams.lat;
+    mapState.zoom = urlParams.zoom;
     ready = true;
   });
 
@@ -37,6 +38,7 @@
 <main>
   <Navbar />
   {#if ready}
+  <Splash />
     <Map />
   {/if}
 </main>

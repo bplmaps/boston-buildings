@@ -1,0 +1,64 @@
+<script>
+  import Fa from "svelte-fa";
+  import { faBuilding } from "@fortawesome/free-solid-svg-icons";
+
+  let active = $state(false);
+
+  function toggleActive() {
+    active = !active;
+  }
+</script>
+
+<div class:hidden={active} >
+  <div
+    class="fixed inset-0 z-50 flex items-center justify-center bg-stone-800/90 transition-opacity text-white"
+  >
+    <div
+      class="relative transform overflow-hidden rounded-lg bg-stone-900 border-4 border-white px-4 pb-4 pt-5 text-left shadow-xl shadow-red-700/50 transition-all mx-8 md:mx-0 sm:my-8 sm:w-full sm:max-w-md sm:p-6 !shadow-red"
+    >
+      <div>
+        <div>
+          <div
+            class="text-center text-4xl uppercase font-black tracking-widest"
+          >
+            Boston's buildings
+          </div>
+        </div>
+        <div class="m-3 text-center text-lg sm:mt-5">
+          <p class="mb-4">
+            This map provides a window into the City of Boston's <a
+              href="https://data.boston.gov/dataset/boston-buildings-inventory"
+              >Buildings Inventory</a
+            > dataset.
+          </p>
+          <p class="mb-4">
+            Before you explore the map, note that this map is <i>not</i> an authoritative census of building ages. <span
+              class="font-bold text-blue-400"
+              > Building ages may not be accurate!</span>
+          </p>
+          <p class="mb-4">If you see a building that is dated incorrectly, feel free to <span class="text-bold">submit a correction</span> by clicking the building and completing the form.</p>
+        </div>
+      </div>
+      <div class="mt-4 sm:mt-6">
+        <button
+          type="button"
+          onclick={toggleActive}
+          class="transition duration-100 ease-in-out inline-flex w-full py-2 justify-center rounded-md bg-stone-600 border-2 hover:cursor-pointer hover:bg-[#66C2A5] hover:text-black hover:border-stone-200"
+        >
+          <Fa icon={faBuilding} size="lg" />
+          <p class="mx-2">Explore buildings</p></button
+        >
+      </div>
+      <div class="py-4 mt-4">
+        <p class="text-xs text-center font-semibold">
+          A project of the <a
+            class="text-blue-900 hover:text-blue-600 transition-colors"
+            href="https://leventhalmap.org"
+            target="_blank">Leventhal Map & Education Center</a
+          >
+          at the <a href="https://bpl.org">Boston Public Library</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
