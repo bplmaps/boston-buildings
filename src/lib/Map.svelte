@@ -5,7 +5,7 @@
   import Legend from "./Legend.svelte";
   import { Popup } from "@maptiler/sdk";
   import { mapState } from "./state.svelte";
-  import Form from "./Form.svelte";
+  import LearnMore from "./LearnMore.svelte";
   import { faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 
   let map = $state();
@@ -14,7 +14,7 @@
   let delay = $state(false);
 
   let pid = $state(null);
-  let lnglat = $state()
+  let lnglat = $state();
 
   setTimeout(() => {
     delay = true;
@@ -96,31 +96,38 @@
 
       map.on("click", "buildings-layer", (e) => {
         const feature = e.features[0];
-        if (!pid === undefined) {
-          pid = feature.properties.pid_long;
-        } else {
-          pid = 999999999
-        }
+        pid = feature.properties.pid_long;
 
-        lnglat = e.lngLat
+        lnglat = e.lngLat;
 
         const container = document.createElement("div");
         container.innerHTML = `
-        <div class="text-lg">
-          Year Built:
-          <strong>${feature.properties.yr_built || "Unknown"}</strong>
-        </div>
-        <a class="text-[1.2em]" href="https://atlascope.org/#/view:share$mode:glass$center:${lnglat.lng},${lnglat.lat}$zoom:19$base:maptiler-streets$overlay:ark:/76611/al7rtfm98">
-          Open Atlascope here
-        </a>
-        <div class="mt-2 italic px-2 py-1 bg-stone-100 rounded">
-          <p class="inline">Does the year look wrong?
-            <button class="inline underline text-red-600 cursor-pointer">
-              Click here to suggest a correction!
-            </button>
-          </p>
-        </div>
-        `;
+  <div class="space-y-2 text-stone-800">
+
+    <div class="text-lg font-medium">
+      Year Built:
+      <span class="font-bold text-stone-900">
+        ${feature.properties.yr_built || "Unknown"}
+      </span>
+    </div>
+
+    <a
+      class="block text-blue-700 underline font-semibold"
+      href="https://atlascope.org/#/view:share$mode:glass$center:${lnglat.lng},${lnglat.lat}$zoom:19$base:maptiler-streets$overlay:ark:/76611/al7rtfm98"
+    >
+      View this building in Atlascope →
+    </a>
+    <div class="mt-3 px-3 py-2 bg-stone-100 rounded border border-stone-300">
+
+    <p class="text-sm text-stone-700">
+      Does this year built look incorrect?
+      <button class="inline hover:cursor-pointer underline text-red-600 font-semibold">
+        Learn more
+      </button>
+    </p>
+    </div>
+      </div>
+    `;
 
         const button = container.querySelector("button");
         button.addEventListener("click", () => {
@@ -158,7 +165,7 @@
 
 <div class="map-wrap">
   {#if mapState.form}
-    <Form {pid} {lnglat} />
+    <LearnMore {pid} {lnglat} />
   {/if}
   <div class="map" bind:this={mapContainer}>
     {#if map && delay}

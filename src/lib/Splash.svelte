@@ -7,21 +7,43 @@
   function toggleActive() {
     active = !active;
   }
+
+  const text = "Boston's buildings";
+  const ramp = [
+    "#D53E4F",
+    "#F46D43",
+    "#FDAE61",
+    "#FEE08B",
+    "#FFFFBF",
+    "#E6F598",
+    "#ABDDA4",
+    "#66C2A5",
+    "#3288BD",
+  ];
+
+  const letters = text.split("").map((ch, i) => ({
+    char: ch,
+    color: ramp[i % ramp.length],
+  }));
 </script>
 
-<div class:hidden={active} >
+<div class:hidden={active}>
   <div
     class="fixed inset-0 z-50 flex items-center justify-center bg-stone-800/90 transition-opacity text-white"
   >
     <div
-      class="relative transform overflow-hidden rounded-lg bg-stone-900 border-4 border-white px-4 pb-4 pt-5 text-left shadow-xl shadow-red-700/50 transition-all mx-8 md:mx-0 sm:my-8 sm:w-full sm:max-w-md sm:p-6 !shadow-red"
+      class="relative transform overflow-hidden rounded-lg bg-stone-900 border-4 border-white px-4 pb-4 pt-5 text-left shadow-xl shadow-stone-900/10 transition-all mx-8 md:mx-0 sm:my-8 sm:w-full sm:max-w-md sm:p-6"
     >
       <div>
         <div>
           <div
             class="text-center text-4xl uppercase font-black tracking-widest"
           >
-            Boston's buildings
+            <h1 class="text-4xl font-black tracking-widest uppercase">
+              {#each letters as l}
+                <span style="color: {l.color}">{l.char}</span>
+              {/each}
+            </h1>
           </div>
         </div>
         <div class="m-3 text-center text-lg sm:mt-5">
@@ -29,14 +51,17 @@
             This map provides a window into the City of Boston's <a
               href="https://data.boston.gov/dataset/boston-buildings-inventory"
               >Buildings Inventory</a
-            > dataset.
+            > dataset, which estimates the date of construction for structures across
+            the city.
           </p>
           <p class="mb-4">
-            Before you explore the map, note that this map is <i>not</i> an authoritative census of building ages. <span
-              class="font-bold text-blue-400"
-              > Building ages may not be accurate!</span>
+            This map is <i>not</i> an authoritative census of building ages.
+            <span class="font-black"> Building ages may not be accurate!</span>
+            This means the map is best for
+            <span class="italic">aggregate exploration</span>. You can click on
+            any building to learn more about the limits of the source dataset,
+            as well as resources for studying building history.
           </p>
-          <p class="mb-4">If you see a building that is dated incorrectly, feel free to <span class="text-bold">submit a correction</span> by clicking the building and completing the form.</p>
         </div>
       </div>
       <div class="mt-4 sm:mt-6">

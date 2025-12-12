@@ -76,42 +76,48 @@
             Submit a correction
           </div>
         </div>
+        {#if pid}
         <p class="text-md text-center italic mt-2 mb-4">Building parcel ID: {pid}</p>
-        <p class="text-sm my-2">Use this form to suggest a correct building date.</p>
-        <form class="pl-2 py-2 space-y-2" onsubmit={handleSubmit}>
-          <div class="flex items-center gap-2">
-            <span class="w-32">Your name:</span>
+        {/if}
+        <p class="text-sm my-2">Use this form to suggest a corrected building date. If you can, please include a source for your correction.</p>
+        <form class="pl-2 py-2 space-y-2 text-sm" onsubmit={handleSubmit}>
+          <div class="grid items-center gap-2">
+            <span>Your name:</span>
             <input
-              class="flex-1 text-black rounded bg-stone-400 px-2 py-1"
+              placeholder="e.g., Norman Leventhal"
+              class="text-black rounded bg-stone-400 px-2 py-1"
               bind:value={name}
             />
           </div>
 
-          <div class="flex items-center gap-2">
-            <span class="w-32">Your email:</span>
+          <div class="grid items-center gap-2">
+            <span>Your email:</span>
             <input
-              class="flex-1 text-black rounded bg-stone-400 px-2 py-1"
+              placeholder="e.g., frontdesk@leventhalmap.org"
+              class="text-black rounded bg-stone-400 px-2 py-1"
               bind:value={email}
             />
           </div>
 
-          <div class="flex items-center gap-2">
-            <span class="w-32">Corrected year:</span>
+          <div class="grid items-center gap-2">
+            <span>What's the correct date of construction for this building?</span>
             <input
-              class="flex-1 text-black rounded bg-stone-400 px-2 py-1"
+              placeholder="e.g., 1776"
+              class="text-black rounded bg-stone-400 px-2 py-1"
               bind:value={correctYear}
             />
           </div>
 
-          <div class="flex items-center gap-2">
-            <span class="w-32">Source:</span>
+          <div class="grid items-center gap-2">
+            <span>Source:</span>
             <input
-              class="flex-1 text-black rounded bg-stone-400 px-2 py-1"
+              placeholder="e.g., Boston Landmark Commission, Atlascope, etc."
+              class="text-black rounded bg-stone-400 px-2 py-1"
               bind:value={source}
             />
           </div>
 
-          <div class="flex gap-2 mt-4">
+          <div class="flex gap-2 mt-8">
             <button
               type="submit"
               class="ease-in-out transition duration-100 bg-stone-600 hover:cursor-pointer hover:bg-[#3288BD] px-4 py-2 inline-flex w-full justify-center rounded-md border-2"

@@ -109,3 +109,11 @@ a {
   text-decoration: underline dotted;
   text-underline-offset: 0.125em;
 }
+
+.maplibregl-popup-content { 
+  padding: 1.5em !important;
+}
+
+.maplibregl-popup-close-button { 
+  padding: 1em !important;
+}
