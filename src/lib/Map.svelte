@@ -105,18 +105,32 @@
   <div class="space-y-2 text-stone-800">
 
     <div class="text-lg font-medium">
-      Year Built:
-      <span class="font-bold text-stone-900">
+      Estimated Year Built:
+      <span class="!font-black text-stone-900">
         ${feature.properties.yr_built || "Unknown"}
       </span>
     </div>
+
+    <div class="mt-3 px-3 py-2 bg-stone-100 rounded border border-stone-300">
 
     <a
       class="block text-blue-700 underline font-semibold"
       href="https://atlascope.org/#/view:share$mode:glass$center:${lnglat.lng},${lnglat.lat}$zoom:19$base:maptiler-streets$overlay:ark:/76611/al7rtfm98"
     >
-      View this building in Atlascope →
+      <i class="fa-solid fa-arrow-up-right-from-square"></i>View this building in Atlascope
     </a>
+
+    </div>
+    <div class="mt-3 px-3 py-2 bg-stone-100 rounded border border-stone-300">
+
+    <a
+      class="block text-blue-700 underline font-semibold"
+      href="https://app01.cityofboston.gov/parcelviewer/?center=-${lnglat.lng},${lnglat.lat}&level=18"
+    >
+      <i class="fa-solid fa-arrow-up-right-from-square"></i>View this building in the City of Boston's Parcel Viewer
+    </a>
+
+    </div>
     <div class="mt-3 px-3 py-2 bg-stone-100 rounded border border-stone-300">
 
     <p class="text-sm text-stone-700">

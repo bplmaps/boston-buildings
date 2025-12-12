@@ -99,12 +99,13 @@
           </p>
         {/if}
         <div class="my-6 text-sm mx-6">
+          <p class="my-2 font-black !text-lg !-mx-4">
+            Some buildings in the map are dated incorrectly!
+          </p>
           <p class="my-2">
-            <span class="font-black"
-              >Some buildings in the map are dated incorrectly!</span
-            > Reasons for this could include significant renovations to a structure,
-            errors in the tax assessment records, particular choices by the dataset's
-            author(s), and much more.
+            Reasons for this could include significant renovations to a
+            structure, errors in the tax assessment records, particular choices
+            by the dataset's author(s), and much more.
           </p>
           Accurately dating every building in the City of Boston is a very difficult
           task. This map represents our partial attempt, using a dataset created
