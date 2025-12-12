@@ -6,7 +6,7 @@
   import { Popup } from "@maptiler/sdk";
   import { mapState } from "./state.svelte";
   import LearnMore from "./LearnMore.svelte";
-  import { faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
+  import { popupHTML } from "./helpers/popup";
 
   let map = $state();
   let mapContainer;
@@ -101,48 +101,7 @@
         lnglat = e.lngLat;
 
         const container = document.createElement("div");
-        container.innerHTML = `
-  <div class="space-y-2 text-stone-800">
-
-    <div class="text-lg font-medium">
-      Estimated Year Built:
-      <span class="!font-black text-stone-900">
-        ${feature.properties.yr_built || "Unknown"}
-      </span>
-    </div>
-
-    <div class="mt-3 px-3 py-2 bg-stone-100 rounded border border-stone-300">
-
-    <a
-      class="block text-blue-700 underline font-semibold"
-      href="https://atlascope.org/#/view:share$mode:glass$center:${lnglat.lng},${lnglat.lat}$zoom:19$base:maptiler-streets$overlay:ark:/76611/al7rtfm98"
-    >
-      <i class="fa-solid fa-arrow-up-right-from-square"></i>View this building in Atlascope
-    </a>
-
-    </div>
-    <div class="mt-3 px-3 py-2 bg-stone-100 rounded border border-stone-300">
-
-    <a
-      class="block text-blue-700 underline font-semibold"
-      href="https://app01.cityofboston.gov/parcelviewer/?center=${lnglat.lng},${lnglat.lat}&level=18"
-    >
-      <i class="fa-solid fa-arrow-up-right-from-square"></i>View this building in the City of Boston's Parcel Viewer
-    </a>
-
-    </div>
-    <div class="mt-3 px-3 py-2 bg-stone-100 rounded border border-stone-300">
-
-    <p class="text-sm text-stone-700">
-      Does this year built look incorrect?
-      <button class="inline hover:cursor-pointer underline text-red-600 font-semibold">
-        Learn more
-      </button>
-    </p>
-    </div>
-      </div>
-    `;
-
+        container.innerHTML = popupHTML(feature, lnglat, pid);
         const button = container.querySelector("button");
         button.addEventListener("click", () => {
           mapState.form = !mapState.form;
