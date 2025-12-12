@@ -125,7 +125,7 @@
 
     <a
       class="block text-blue-700 underline font-semibold"
-      href="https://app01.cityofboston.gov/parcelviewer/?center=-${lnglat.lng},${lnglat.lat}&level=18"
+      href="https://app01.cityofboston.gov/parcelviewer/?center=${lnglat.lng},${lnglat.lat}&level=18"
     >
       <i class="fa-solid fa-arrow-up-right-from-square"></i>View this building in the City of Boston's Parcel Viewer
     </a>
