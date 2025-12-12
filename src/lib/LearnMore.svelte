@@ -95,7 +95,7 @@
         </div>
         {#if pid}
           <p class="text-md text-center italic mt-2 mb-4">
-            Building parcel ID: {pid}
+            Building parcel ID: {pid.length < 10 ? `0${pid}` : pid}
           </p>
         {/if}
         <div class="my-6 text-sm mx-6">
@@ -129,6 +129,12 @@
               Double-check this parcel ID against the <a
                 href="https://data.boston.gov/dataset/boston-buildings-inventory"
                 >source dataset</a
+              >
+            </li>
+                        <li>
+              Compare this parcel ID with official <a
+                href="https://app01.cityofboston.gov/parcelviewer/?center={lnglat.lng},{lnglat.lat}&level=18"
+                >tax assessment data</a
               >
             </li>
             <li>

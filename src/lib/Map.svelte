@@ -146,7 +146,6 @@
         const button = container.querySelector("button");
         button.addEventListener("click", () => {
           mapState.form = !mapState.form;
-          console.log(feature.properties.pid_long);
         });
 
         new Popup().setLngLat(e.lngLat).setDOMContent(container).addTo(map);
