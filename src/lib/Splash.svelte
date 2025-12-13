@@ -37,16 +37,16 @@
       <div>
         <div>
           <div
-            class="text-center text-4xl uppercase font-black tracking-widest"
+            class="text-center uppercase font-black tracking-widest"
           >
-            <h1 class="text-4xl font-black tracking-widest uppercase">
+            <h1 class="text-2xl md:text-4xl font-black tracking-widest uppercase">
               {#each letters as l}
                 <span style="color: {l.color}">{l.char}</span>
               {/each}
             </h1>
           </div>
         </div>
-        <div class="m-3 text-center text-lg sm:mt-5">
+        <div class="m-3 text-center text-sm md:text-lg sm:mt-5">
           <p class="mb-4">
             This map provides a window into the City of Boston's <a
               href="https://data.boston.gov/dataset/boston-buildings-inventory"

@@ -36,7 +36,7 @@
   function getColorForYear(year) {
     if (year == null || isNaN(year)) return "#2E2E2E"; // fallback for unknown
     const match = colors.find(
-      ({ range }) => year >= range.start && year < range.end
+      ({ range }) => year >= range.start && year < range.end,
     );
     return match ? match.color : "#2E2E2E";
   }

@@ -26,54 +26,6 @@
   function toggleActive() {
     mapState.form = !mapState.form;
   }
-
-  // FEEDBACK FORM COMMENTED OUT
-
-  // let name = $state("");
-  // let email = $state("");
-  // let correctYear = $state("");
-  // let source = $state("");
-
-  // let lat = $state(null);
-  // let long = $state(null);
-
-  // async function handleSubmit(event) {
-  //   event.preventDefault();
-
-  //   lat = lnglat.lat;
-  //   long = lnglat.lng;
-  // const payload = {
-  //   user: name,
-  //   form_date: new Date().toISOString(),
-  //   pid,
-  //   building_date: correctYear,
-  //   source,
-  //   email: email,
-  //   lat: lat,
-  //   long: long,
-  // };
-
-  // const res = await fetch("/.netlify/functions/submit", {
-  //   method: "POST",
-  //   headers: { "Content-Type": "application/json" },
-  //   body: JSON.stringify(payload),
-  // });
-
-  // const data = await res.json();
-
-  // if (!res.ok) {
-  //   console.error("Error submitting form:", data.error);
-  //   return;
-  // }
-
-  // console.log("Form submitted!", data);
-
-  // mapState.form = false;
-
-  // alert("Thanks for the suggestion! Our team will review this.");
-
-  // console.log(payload);
-  // }
 </script>
 
 <div class={`${!mapState.form ? "hidden" : ""}`}>
@@ -81,12 +33,14 @@
     class="fixed inset-0 z-50 flex items-center justify-center bg-stone-800/90 transition-opacity text-white"
   >
     <div
-      class="relative transform overflow-hidden rounded-lg bg-stone-900 border-4 border-white px-4 pb-4 pt-5 text-left transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6 !shadow-red"
+      class="max-h-[500px] !overflow-auto relative transform overflow-hidden rounded-lg bg-stone-900 border-4 border-white px-4 pb-4 pt-5 text-left transition-all my-8 w-full sm:max-w-lg mx-8 sm:p-6 !shadow-red"
     >
       <div>
         <div>
           <div class="text-center uppercase font-black tracking-widest">
-            <h1 class="text-3xl font-black tracking-widest uppercase">
+            <h1
+              class="text-xl md:text-3xl font-black tracking-widest uppercase"
+            >
               {#each letters as l}
                 <span style="color: {l.color}">{l.char}</span>
               {/each}
@@ -99,7 +53,7 @@
           </p>
         {/if}
         <div class="my-6 text-sm mx-6">
-          <p class="my-2 font-black !text-lg !-mx-4">
+          <p class="my-2 font-black !text-md md:text-lg">
             Some buildings in the map are dated incorrectly!
           </p>
           <p class="my-2">
@@ -131,7 +85,7 @@
                 >source dataset</a
               >
             </li>
-                        <li>
+            <li>
               Compare this parcel ID with official <a
                 href="https://app01.cityofboston.gov/parcelviewer/?center={lnglat.lng},{lnglat.lat}&level=18"
                 >tax assessment data</a

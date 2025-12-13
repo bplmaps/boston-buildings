@@ -29,6 +29,8 @@ code {
 
 .maplibregl-ctrl-bottom-left {
   opacity: 0.95 !important;
+  padding-left: 2em;
+  padding-bottom: 2em;
 }
 
 .maplibregl-legend-list {
@@ -37,6 +39,11 @@ code {
 }
 
 .legend-table-td {
+  width: 30px;
+}
+
+.legend-table-td>label {
+  display: grid;
   width: 70px !important;
   height: 30px !important;
 }
@@ -45,13 +52,11 @@ code {
   font-size: 1.5em !important;
 }
 
-/* remove the rendered layers checkbox */
-
-.maplibregl-legend-list > input[type="checkbox"] {
+.maplibregl-legend-list>input[type="checkbox"] {
   display: none;
 }
 
-.maplibregl-legend-list > .maplibregl-legend-onlyRendered-label {
+.maplibregl-legend-list>.maplibregl-legend-onlyRendered-label {
   display: none;
 }
 
@@ -66,14 +71,8 @@ code {
   border-radius: 2px !important;
 }
 
-.highlight::before {
-  content: "»";
-  font-size: 2em;
-  margin-left: -1em;
-}
-
 input[type="checkbox"] {
-  margin-left: 1em;
+  margin-left: 0em;
   appearance: none;
   background-color: #fff;
   font: inherit;
@@ -110,10 +109,15 @@ a {
   text-underline-offset: 0.125em;
 }
 
-.maplibregl-popup-content { 
+.maplibregl-popup-content {
   padding: 1.5em !important;
 }
 
-.maplibregl-popup-close-button { 
+.maplibregl-popup-close-button {
   padding: 1em !important;
+}
+
+tr {
+  float:left;
+  width: 50%;
 }

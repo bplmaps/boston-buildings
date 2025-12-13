@@ -4,11 +4,11 @@ export const popupHTML = (feature, lnglat, pid) => `
     <div class="text-[1.3em] font-medium gap-2">
       Estimated Year Built:
       <span class="!font-black text-stone-900">
-        ${feature.properties.yr_built || "Unknown"}
+        ${feature.properties.yr_built || "???"}
       </span>
       Parcel ID: 
       <span class="!font-black text-stone-900">
-        ${pid.length < 10 ? `0${pid}` : pid}
+        ${pid != undefined && pid.length < 10 ? `0${pid}` : "???"}
       </span>
     </div>
 
@@ -17,7 +17,7 @@ export const popupHTML = (feature, lnglat, pid) => `
 
     <a
       class="block underline font-semibold"
-      href="https://atlascope.org/#/view:share$mode:glass$center:${lnglat.lng},${lnglat.lat}$zoom:19$base:maptiler-streets$overlay:ark:/76611/al7rtfm98"
+      href="https://atlascope.org/#/view:share$mode:glass$center:${lnglat.lng},${lnglat.lat}$zoom:18.5$base:maptiler-streets$overlay:ark:/76611/al7rtfm98"
     >
       Open in Atlascope
     </a>
@@ -28,7 +28,7 @@ export const popupHTML = (feature, lnglat, pid) => `
 
     <a
       class="block underline font-semibold"
-      href="https://app01.cityofboston.gov/parcelviewer/?center=${lnglat.lng},${lnglat.lat}&level=18"
+      href="https://app01.cityofboston.gov/parcelviewer/?center=${lnglat.lng},${lnglat.lat}&level=18.5"
     >
       Open in Parcel Viewer
     </a>
@@ -39,8 +39,8 @@ export const popupHTML = (feature, lnglat, pid) => `
         <div class="mt-3 px-3 py-2 bg-stone-100 rounded border border-stone-300 hover:bg-stone-200 hover:border-stone-400">
 
     <a
-      class="block text-blue-700 underline font-semibold"
-      href="https://www.cityofboston.gov/assessing/search/?pid=${pid.length < 10 ? `0${pid}` : pid}"
+      class="block text-blue-700 underline font-semibold ${pid == undefined ? "text-black hover:cursor-not-allowed pointer-events-none italic !text-gray-400" : ""}"
+      href="https://www.cityofboston.gov/assessing/search/?pid=${pid != undefined && pid.length < 10 ? `0${pid}` : "???"}"
     >
       View City of Boston tax assessment records
     </a>
