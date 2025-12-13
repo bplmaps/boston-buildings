@@ -135,7 +135,7 @@
   });
 </script>
 
-<div class="map-wrap">
+<div class="map-wrap h-[85vh] md:h-[90vh]">
   {#if mapState.form}
     <LearnMore {pid} {lnglat} />
   {/if}
